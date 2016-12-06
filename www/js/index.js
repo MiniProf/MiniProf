@@ -7,19 +7,19 @@ var app ={
   },
   prefLSID:"Prefs",
   bookLSID:"BookPos",
-  getPreferences:()=>{
+  getPreferences:function(){
     return JSON.parse(window.localStorage.getItem(this.prefLSID));
   },
-  setPreferences:(items)=>{
+  setPreferences:function(items){
     window.localStorage.setItem(this.prefLSID,JSON.stringify(items));
   },
-  setBookPos:(pos)=>{
+  setBookPos:function(pos){
     window.localStorage.setItem(this.bookLSID,pos);
   },
-  getBookPos:()=>{
+  getBookPos:function(){
     return window.localStorage.getItem(this.bookLSID);
   },
-  removeBookPos:()=>{
+  removeBookPos:function(){
     window.localStorage.setItem(this.bookLSID,"");
   }
 };

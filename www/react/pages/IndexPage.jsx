@@ -1,51 +1,34 @@
 var React  = require('react');
 var TopBar = require('../components/TopBar');
+var request = require('superagent');
 var IndexPage = React.createClass({
   getInitialState:()=>{
-    return {};
+    return {void:false};
+  },
+  sendResponse:function(letter){
+    request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
+      debugger;
+      this.setState({void:true});
+    });
   },
   render:function(){
     var isBooked = (app.getBookPos())? true:false;
     var bStyle = (!isBooked)?{height: "26vh"}:{};
     return(<div id="IndexPage" className="page">
-
-    <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}}> A </button>
-    <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}}> B </button>
-    <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}}> C </button>
-    <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}}> D </button>
-    <button className = "huge ui grey button" style = {{margin:"10px 45%",width:"10%"}}> Back </button>
-
+    {(!this.state.void)?
+    <div>
+      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("A")}}> A </button>
+      <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("B")}}> B </button>
+      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("C")}}> C </button>
+      <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("D")}}> D </button>
+    </div>
+    :
+    <div style={{textAlign:"center"}}>
+      <h1>Your Vote Has Been Cast</h1>
+    </div>
+    }
+    {/*<button className = "huge ui grey button" style = {{margin:"10px 45%",width:"10%"}} onClick={this.props.router.goBack}> Back </button>*/}
 </div>);
-},
-  componentDidMount(){
-    debugger;
-    var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 0, lng: 0},
-          zoom: 1,
-          streetViewControl: false,
-          mapTypeControlOptions: {
-            mapTypeIds: ['moon']
-          }
-        });
-
-        var moonMapType = new google.maps.ImageMapType({
-          getTileUrl: function(coord, zoom) {
-              var normalizedCoord = getNormalizedCoord(coord, zoom);
-              if (!normalizedCoord) {
-                return null;
-              }
-              var bound = Math.pow(2, zoom);
-              return './img/floorPlan.png';
-          },
-          tileSize: new google.maps.Size(2024, 2024),
-          maxZoom: 9,
-          minZoom: 0,
-          radius: 1738000,
-          name: 'Moon'
-        });
-
-        map.mapTypes.set('moon', moonMapType);
-        map.setMapTypeId('moon');
-  }
+}
 });
 module.exports = IndexPage;
