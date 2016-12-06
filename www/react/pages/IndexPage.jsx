@@ -21,6 +21,7 @@ var IndexPage = React.createClass({
       <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("B")}}> B </button>
       <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("C")}}> C </button>
       <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("D")}}> D </button>
+      <button onClick={()=>{this.setState({void:false})}}>Back</button>
     </div>
     :
     <div style={{textAlign:"center"}}>
