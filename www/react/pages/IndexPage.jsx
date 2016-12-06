@@ -13,6 +13,7 @@ var IndexPage = React.createClass({
     <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}}> B </button>
     <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}}> C </button>
     <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}}> D </button>
+    <button className = "huge ui grey button" style = {{margin:"10px 45%",width:"10%"}}> Back </button>
 
 </div>);
 },
