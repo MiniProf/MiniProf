@@ -8,6 +8,9 @@ var FloorPlanPage = require('./pages/FloorPlanPage');
 var DateTime = require('./pages/DateTimePage');
 var FindPerson = require('./pages/FindPerson');
 var ProfilePage = require('./pages/ProfilePage');
+var JoinScreen = require('./pages/JoinScreen');
+var Controller = require('./pages/Controller');
+var Review = require('./pages/Review');
 import mat from 'material-ui/Avatar';
 var HelpPage = require('./pages/HelpPage');
 
@@ -15,7 +18,10 @@ const Screen = () =>(
   <div>
       <TopBar router={router} title="MiniProf"/>
       <Router router={router}>
-        <IndexPage path="/" router={router}/>
+        <JoinScreen path= "/" router={router}/>
+        <Controller path="/controller" router={router}/>
+        <Review path="/review" router={router}/>
+        <IndexPage path="/index" router={router}/>
         <SearchPage path="/search" router={router}/>
         <FloorPlanPage path="/floor" router={router}/>
         <DateTime path="/datetime" router={router}/>

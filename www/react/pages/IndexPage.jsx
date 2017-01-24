@@ -17,7 +17,7 @@ var IndexPage = React.createClass({
     return(<div id="IndexPage" className="page">
     {(!this.state.void)?
     <div>
-      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("A")}}> A </button>
+      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("A")}}> Hell no </button>
       <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("B")}}> B </button>
       <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("C")}}> C </button>
       <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("D")}}> D </button>
