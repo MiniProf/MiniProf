@@ -12,8 +12,6 @@ var IndexPage = React.createClass({
     });
   },
   render:function(){
-    var isBooked = (app.getBookPos())? true:false;
-    var bStyle = (!isBooked)?{height: "26vh"}:{};
     return(<div id="IndexPage" className="page">
     {(!this.state.void)?
     <div>
