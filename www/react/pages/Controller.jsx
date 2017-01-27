@@ -6,27 +6,44 @@ var IndexPage = React.createClass({
     return {void:false};
   },
   sendResponse:function(letter){
-    request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
+    request.get(serverName + 'PollResponse.php?VOTE='+ letter).end((err,res)=>{
       debugger;
       this.setState({void:true});
     });
   },
+  showSidebar:function(){
+    $('.ui.sidebar')
+    .sidebar('toggle')
+  ;},
   render:function(){
-    var isBooked = (app.getBookPos())? true:false;
-    var bStyle = (!isBooked)?{height: "26vh"}:{};
     return(<div id="IndexPage" className="page">
-    {(!this.state.void)?
+
     <div>
-      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Option A")}}> A </button>
-      <button className = "massive fluid ui cyan button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Option B")}}> B </button>
-      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Option C")}}> C </button>
-      <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Option D")}}> D </button>
+      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
+      <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
+      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
     </div>
-    :
-    <div style={{textAlign:"center"}}>
-      <h1>Attmempting session join...</h1>
+
+    <div className="ui thin bottom sidebar vertical menu">
+      <a className="item" style = {{textAlign:"center", background:"rgba(255,255,0,0.7)", fontWeight:"bold", fontSize:"24", margin:"3px 3px"}}>
+        A
+      </a>
+      <a className="item" style = {{textAlign:"center", background:"rgba(0,0,255,0.7)", fontWeight:"bold", fontSize:"24", margin:"3px 3px"}}>
+        B
+      </a>
+      <a className="item" style = {{textAlign:"center", background:"rgba(255,0,0,0.7)", fontWeight:"bold", fontSize:"24", margin:"3px 3px"}}>
+        C
+      </a>
+      <a className="item" style = {{textAlign:"center", background:"rgba(0,255,0,0.7)", fontWeight:"bold", fontSize:"24", margin:"3px 3px"}}>
+        D
+      </a>
+      <a className="item" onClick={this.showSidebar} style = {{textAlign:"center", background:"rgba(0,0,0,0)", fontWeight:"bold", fontSize:"16", margin:"3px 3px"}}>
+        GO BACK
+      </a>
     </div>
-    }
+    <div className="center pusher" onClick={this.showSidebar}>
+      <button className = "fluid ui green button" style = {{margin:"40px 0px"}}> ANSWER QUIZ </button>
+    </div>
 </div>);
 }
 });

@@ -12,23 +12,14 @@ var IndexPage = React.createClass({
     });
   },
   render:function(){
-    var isBooked = (app.getBookPos())? true:false;
-    var bStyle = (!isBooked)?{height: "26vh"}:{};
     return(<div id="IndexPage" className="page">
-    {(!this.state.void)?
+    <div  className = "fluid ui icon input"  style = {{width: "100%"}}>
+      <input type="text" name="name" placeholder = "Session Code..."/>
+      <i className="sign in icon"></i>
+    </div>
     <div>
-      <form>
-        <label>
-          <input type="text" name="name" style = {{width: "100%"}}/>
-        </label>
-      </form>
       <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Join Session")}}> Join Session </button>
     </div>
-    :
-    <div style={{textAlign:"center"}}>
-      <h1>Attmempting session join...</h1>
-    </div>
-    }
 </div>);
 }
 });
