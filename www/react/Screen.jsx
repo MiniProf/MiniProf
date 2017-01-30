@@ -3,16 +3,10 @@ var TopBar = require('./components/TopBar');
 var Router = require('./components/Router').Router;
 var router = require('./components/Router').router;
 var IndexPage = require('./pages/IndexPage');
-var SearchPage = require('./pages/SearchPage');
-var FloorPlanPage = require('./pages/FloorPlanPage');
-var DateTime = require('./pages/DateTimePage');
-var FindPerson = require('./pages/FindPerson');
-var ProfilePage = require('./pages/ProfilePage');
 var JoinScreen = require('./pages/JoinScreen');
 var Controller = require('./pages/Controller');
 var Review = require('./pages/Review');
 import mat from 'material-ui/Avatar';
-var HelpPage = require('./pages/HelpPage');
 
 const Screen = () =>(
   <div>
@@ -22,12 +16,6 @@ const Screen = () =>(
         <Controller path="/controller" router={router}/>
         <Review path="/review" router={router}/>
         <IndexPage path="/index" router={router}/>
-        <SearchPage path="/search" router={router}/>
-        <FloorPlanPage path="/floor" router={router}/>
-        <DateTime path="/datetime" router={router}/>
-        <FindPerson path="/findperson" router={router}/>
-        <ProfilePage path="/profile" router={router}/>
-        <HelpPage path="/help" router={router}/>
       </Router>
       {/*
       <div className="ui top attached demo menu">

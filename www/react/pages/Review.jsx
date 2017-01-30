@@ -8,30 +8,21 @@ var IndexPage = React.createClass({
   sendResponse:function(letter){
     request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
       debugger;
-      this.setState({void:true});
+      this.setState({void:true})
+      this.props.router.goto("/");  
     });
   },
   render:function(){
-    var isBooked = (app.getBookPos())? true:false;
-    var bStyle = (!isBooked)?{height: "26vh"}:{};
     return(<div id="IndexPage" className="page">
-    {(!this.state.void)?
+    <div  className = "fluid ui icon input"  style = {{width: "100%", height:"200px"}}>
+      <input type="text" name="name" placeholder = "Enter your review here..."/>
+      <i className="comments outline icon"></i>
+    </div>
     <div>
-      <form>
-        <label>
-          <input type="text" name="name" style = {{width: "100%"}}/>
-        </label>
-      </form>
-      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Leave Review")}}> Leave Review </button>
-      <button className = "massive fluid ui cyan button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Quick Tag")}}> Quick Tag </button>
-      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Finish Lecture")}}> Finish Lecture </button>
+      <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Submit Review")}}> Submit Review </button>
+      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Finish Lecture")}}> I'm Finished </button>
     </div>
-    :
-    <div style={{textAlign:"center"}}>
-      <h1>Attmempting session join...</h1>
-    </div>
-    }
-</div>);
-}
-});
+  </div>);
+  }
+  });
 module.exports = IndexPage;
