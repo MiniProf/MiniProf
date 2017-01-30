@@ -14,6 +14,7 @@ var IndexPage = React.createClass({
   },
   sendPoll:function(letter){
     debugger;
+    this.props.SessionCode
     var serverName = "http://wilsonator.co.uk/MiniProf/";
     request.get(serverName + 'PollResponse.php?VOTE='+ letter).end((err,res)=>{
       debugger;
@@ -22,6 +23,7 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
     debugger;
+    this.props.SessionCode
     var serverName = "http://wilsonator.co.uk/MiniProf/";
     request.get(serverName + 'addToTLS.php?VOTE='+ letter).end((err,res)=>{
       /*PASS THROUGH: MINUTE, SESSION ID, OPTION */
