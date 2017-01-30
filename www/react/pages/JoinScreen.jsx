@@ -13,11 +13,14 @@ var IndexPage = React.createClass({
   },
   render:function(){
     return(<div id="IndexPage" className="page">
-    <div  className = "fluid ui icon input"  style = {{width: "100%"}}>
+    <div  className = "fluid ui icon input focus"  style = {{width: "100%"}}>
       <input type="text" name="name" placeholder = "Session Code..."/>
       <i className="sign in icon"></i>
     </div>
     <div>
+      <br></br>
+      <br></br>
+      <br></br>
       <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Join Session")}}> Join Session </button>
     </div>
 </div>);

@@ -7,12 +7,9 @@ var TopBar = React.createClass({
   },
   render:function(){
     return (<div id="TopBar" style={{height:"10vh",width:"100vw"}}>
-      <i className="left icon" style={{float:"left",fontSize:"7vh",width:"5%",display:"inline-block",cursor:"pointer"}} onClick={this.goBack}></i>
-      <div style={{display:"inline-block",width:"80%",float:"right",marginRight:"15%",textAlign:"center",position:"relative",right:"-6%",top:"-70%"}}>
-      <h2 style={{display:"inline-block",position:"relative",top:"2.5vh",fontSize:"6vh"}}>{this.props.title}</h2>
-      <h2 style={{display:"inline-block",position:"relative",top:"2.5vh",fontSize:"2.5em"}}>{this.props.title1}</h2>
-      </div>
-    </div>)
+    {/*<i className="left icon" style={{float:"left",fontSize:"7vh",width:"5%",display:"inline-block",cursor:"pointer"}} onClick={this.goBack}></i>*/}
+      <h2 style={{color:"white",display:"inline-block",position:"relative",top:"2.5vh",fontSize:"6vh",textAlign:"center",width:"100%"}}>{this.props.title}</h2>
+      </div>)
   }
 });
 module.exports = TopBar;
