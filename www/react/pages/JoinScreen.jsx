@@ -7,7 +7,9 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
     var SessionCode = this.state.text;
-    request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
+    request.post(serverName +'Sessions/joinSession/')
+    .send({SESSIONID:SessionCode})
+    .end((err,res)=>{
       debugger;
       this.props.router.goto("/controller");
     });
