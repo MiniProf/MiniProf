@@ -7,7 +7,7 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
     request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
-      debugger;
+      
       this.setState({void:true});
     });
   },

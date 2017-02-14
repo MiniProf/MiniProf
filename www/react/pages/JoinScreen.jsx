@@ -11,11 +11,12 @@ var IndexPage = React.createClass({
     request.post(serverName +'Sessions/joinSession/')
     .send({SESSIONID:SessionCode})
     .end((err,res)=>{
-      debugger;
+
       if(!err && !res.body.error){
         this.props.router.goto("/controller");
       }
       else{
+        this.setState({text:""});
         alert(res.body.msg);
       }
     });

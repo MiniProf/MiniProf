@@ -13,7 +13,7 @@ var IndexPage = React.createClass({
     .set('content-type', 'application/x-www-form-urlencoded')
     .send({SESSIONID:this.props.sessionCode,REVIEW:this.state.text})
     .end((err,res)=>{
-      debugger;
+      
       this.setState({void:true})
       this.props.router.goto("/");
     });

@@ -6,32 +6,32 @@ var IndexPage = React.createClass({
     return {void:false};
   },
   reviewTest:function(letter){
-    debugger;
+
     request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
-      debugger;
+
       this.props.router.goto("/review");
     });
   },
   sendPoll:function(letter){
-    debugger;
+
     //needs POLLID
     request.post(serverName + 'Poll/?ID=3&VOTE='+ letter)
     .set({'content-type':"application/x-www-form-urlencoded"})
     .end((err,res)=>{
-      debugger;
+
       if(!err && !res.body.error)
         this.setState({void:true},this.showSidebar);
     });
   },
   sendResponse:function(letter){
-    debugger;
+
     this.props.SessionCode
     request.post(serverName + 'TLS/')
     .set('content-type', 'application/x-www-form-urlencoded')
     .send({MINUTE:"8",SESSIONID:"000000",OPTION:letter})
     .end((err,res)=>{
       /*PASS THROUGH: MINUTE, SESSION ID, OPTION */
-      debugger;
+
       this.setState({void:true});
     });
   },

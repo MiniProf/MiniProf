@@ -4,7 +4,8 @@
   "description": "MiniProf Student Side",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base www/ --open"
+    "start": "webpack-dev-server --content-base www/ --open",
+    "tozip": "webpack && zip "
   },
   "keywords": [],
   "author": [
