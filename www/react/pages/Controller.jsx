@@ -25,10 +25,9 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
 
-    this.props.SessionCode
     request.post(serverName + 'TLS/')
     .set('content-type', 'application/x-www-form-urlencoded')
-    .send({MINUTE:"8",SESSIONID:"000000",OPTION:letter})
+    .send({MINUTE:"8",SESSIONID:this.props.SessionCode, OPTION:letter})
     .end((err,res)=>{
       /*PASS THROUGH: MINUTE, SESSION ID, OPTION */
 
