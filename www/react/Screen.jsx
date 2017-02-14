@@ -21,7 +21,7 @@ var Screen = React.createClass({
       <Router router={router}>
         <JoinScreen path= "/" router={router} grab={this.sessionGrab}/>
         <Controller path="/controller" router={router} sessionCode={this.state.SessionCode}/>
-        <Review path="/review" router={router}/>
+        <Review path="/review" router={router} sessionCode={this.state.SessionCode}/>
         <IndexPage path="/index" router={router}/>
       </Router>
     </div>);

@@ -7,11 +7,17 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
     var SessionCode = this.state.text;
+    this.props.grab(SessionCode);
     request.post(serverName +'Sessions/joinSession/')
     .send({SESSIONID:SessionCode})
     .end((err,res)=>{
       debugger;
-      this.props.router.goto("/controller");
+      if(!err && !res.body.error){
+        this.props.router.goto("/controller");
+      }
+      else{
+        alert(res.body.msg);
+      }
     });
   },
   onChange:function(e){
