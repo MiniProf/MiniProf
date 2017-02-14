@@ -8,7 +8,7 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "uk.co.wilsonator.MiniProfStudent"
+            "PACKAGE_NAME": "com.github.miniprof.student"
         }
     },
     "dependent_plugins": {}

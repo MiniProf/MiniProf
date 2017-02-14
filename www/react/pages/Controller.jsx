@@ -3,7 +3,10 @@ var TopBar = require('../components/TopBar');
 var request = require('superagent');
 var IndexPage = React.createClass({
   getInitialState:()=>{
-    return {void:false};
+    return {
+      void:false,
+      disabled:false
+    };
   },
   reviewTest:function(letter){
 
@@ -24,13 +27,16 @@ var IndexPage = React.createClass({
     });
   },
   sendResponse:function(letter){
-
+    debugger;
     request.post(serverName + 'TLS/')
     .set('content-type', 'application/x-www-form-urlencoded')
-    .send({MINUTE:"8",SESSIONID:this.props.SessionCode, OPTION:letter})
+    .send({MINUTE:"8",SESSIONID:this.props.sessionCode, OPTION:letter})
     .end((err,res)=>{
       /*PASS THROUGH: MINUTE, SESSION ID, OPTION */
-
+      $("#mainBtns button").addClass('disabled').prop('disabled',true);
+      setTimeout(function() {
+          $("#mainBtns button").removeClass('disabled').prop('disabled', false);
+      }, 5000);
       this.setState({void:true});
     });
   },
@@ -38,10 +44,11 @@ var IndexPage = React.createClass({
     $('.ui.sidebar')
     .sidebar('toggle')
   ;},
+
   render:function(){
     return(<div id="IndexPage" className="page">
 
-    <div>
+    <div id="mainBtns">
       <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
       <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
       <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
