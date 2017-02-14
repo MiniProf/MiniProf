@@ -13,7 +13,7 @@ var IndexPage = React.createClass({
     .set('content-type', 'application/x-www-form-urlencoded')
     .send({SESSIONID:this.props.sessionCode,REVIEW:this.state.text})
     .end((err,res)=>{
-      
+
       this.setState({void:true})
       this.props.router.goto("/");
     });
@@ -26,9 +26,8 @@ var IndexPage = React.createClass({
       <div className="ui form">
 
       <div  className = "ui field"  style = {{width: "100%", height:"150px"}}>
-      <label>Review</label>
+        <label>Review</label>
         <textarea type="text" value={this.state.text} onChange={this.onChange} rows="5" style={{fontSize:"1.5em"}} name="name" placeholder = "Enter your review here..."/>
-        <i className="comments outline icon"></i>
       </div>
       <div>
         <p style = {{color:"grey", textAlign:"center", fontSize:"12"}}>Please enter any comments about the lecture here, this will help both you and the lecturer when it comes to reviewing the lecture.</p>
