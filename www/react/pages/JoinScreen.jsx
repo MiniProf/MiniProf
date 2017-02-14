@@ -9,6 +9,7 @@ var IndexPage = React.createClass({
     var SessionCode = this.state.text;
     this.props.grab(SessionCode);
     request.post(serverName +'Sessions/joinSession/')
+    .set('content-type', 'application/x-www-form-urlencoded')
     .send({SESSIONID:SessionCode})
     .end((err,res)=>{
 
