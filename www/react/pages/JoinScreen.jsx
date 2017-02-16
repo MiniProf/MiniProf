@@ -25,17 +25,25 @@ var IndexPage = React.createClass({
   onChange:function(e){
     this.setState({text:e.target.value});
   },
+  autosubmit:function(e){
+    if(e.which === 13){
+      this.sendResponse(this.state.text)
+    }
+    else{
+      return false;
+    }
+  },
   render:function(){
     return(<div id="IndexPage" className="page">
     <div  className = "fluid ui icon input focus"  style = {{width: "100%"}}>
-      <input type="text" name="name" value={this.state.text} onChange={this.onChange} placeholder = "Session Code..."/>
+      <input type="text" name="name" value={this.state.text} onChange={this.onChange} onKeyPress={this.autosubmit} placeholder = "Session Code..."/>
       <i className="sign in icon"></i>
     </div>
     <div>
       <br></br>
       <br></br>
       <br></br>
-      <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse(this.state.text)}}> Join Session </button>
+      <button type="submit" className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse(this.state.text)}}> Join Session </button>
     </div>
 </div>);
 }
