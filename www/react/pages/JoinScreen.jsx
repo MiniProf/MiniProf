@@ -5,6 +5,21 @@ var IndexPage = React.createClass({
   getInitialState:()=>{
     return {void:false};
   },
+  // onLoad:function() {
+  //   document.addEventListener("deviceready", onDeviceReady(), false);
+  // },
+  //
+  // // device APIs are available
+  // //
+  // onDeviceReady:function() {
+  //     document.addEventListener("backbutton", onBackKeyDown(), false);
+  //     // Add similar listeners for other events
+  // },
+  //
+  // onBackKeyDown:function() {
+  //   alert("erjbv evbeovbeovjearjbeobnsfapn");
+  // },
+
   sendResponse:function(letter){
     var SessionCode = this.state.text;
     this.props.grab(SessionCode);
