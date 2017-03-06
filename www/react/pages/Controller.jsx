@@ -33,13 +33,12 @@ var IndexPage = React.createClass({
     .send({MINUTE:"8",SESSIONID:this.props.sessionCode, OPTION:letter})
     .end((err,res)=>{
       /*PASS THROUGH: MINUTE, SESSION ID, OPTION */
+      $("#mainBtns button").addClass('disabled').prop('disabled',true);
+      setTimeout(function() {
+          $("#mainBtns button").removeClass('disabled').prop('disabled', false);
+      }, 5000);
       this.setState({void:true});
     });
-    this.setState({disabled:true});
-    //$("#mainBtns button").addClass('disabled').prop('disabled',true);
-    setTimeout(()=>{
-      this.setState({disabled:false});
-    }, 5000);
   },
   showSidebar:function(){
     $('.ui.sidebar')
@@ -47,13 +46,13 @@ var IndexPage = React.createClass({
   ;},
 
   render:function(){
-    let classDis = (this.state.disabled)?'disabled':'';
     return(<div id="IndexPage" className="page">
+
     <div id="mainBtns">
-      <button className={'massive fluid ui yellow button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
-      <button className = {'massive fluid ui blue button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
-      <button className = {'massive fluid ui red button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
-      <button className = {'massive fluid ui green button ' + classDis } disabled={(this.state.disabled)?true:false}  style = {{margin:"10px 0px"}} onClick={()=>{this.reviewTest("Submit Review")}}> Review Test </button>
+      <button className = "massive fluid ui yellow button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
+      <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
+      <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
+      <button className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.reviewTest("Submit Review")}}> Review Test </button>
     </div>
 
     <div className="ui thin bottom sidebar vertical menu">
