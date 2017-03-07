@@ -3,6 +3,10 @@ var TopBar = require('../components/TopBar');
 var request = require('superagent');
 var IndexPage = React.createClass({
   getInitialState:()=>{
+    history.pushState(null,null,location.href);
+    window.onpopstate = function (event) {
+      //history.go(1);
+    };
     return {void:false};
   },
   // onLoad:function() {

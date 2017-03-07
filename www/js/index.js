@@ -1,26 +1,20 @@
 var app ={
+  // Application Constructor
   initialize: function() {
-
+      document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
   },
+
+
+  // deviceready Event Handler
+  //
+  // Bind any cordova events here. Common events are:
+  // 'pause', 'resume', etc.
   onDeviceReady: function() {
+      document.addEventListener("backbutton", function(){}, false);
+  },
 
-  },
-  prefLSID:"Prefs",
-  bookLSID:"BookPos",
-  getPreferences:function(){
-    return JSON.parse(window.localStorage.getItem(this.prefLSID));
-  },
-  setPreferences:function(items){
-    window.localStorage.setItem(this.prefLSID,JSON.stringify(items));
-  },
-  setBookPos:function(pos){
-    window.localStorage.setItem(this.bookLSID,pos);
-  },
-  getBookPos:function(){
-    return window.localStorage.getItem(this.bookLSID);
-  },
-  removeBookPos:function(){
-    window.localStorage.setItem(this.bookLSID,"");
+  // Update DOM on a Received Event
+  receivedEvent: function(id) {
   }
 };
 
