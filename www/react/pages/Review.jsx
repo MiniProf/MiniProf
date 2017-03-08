@@ -34,7 +34,7 @@ var IndexPage = React.createClass({
         <br></br>
         <br></br>
         <button className = "massive fluid ui blue button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Submit") + window.localStorage.removeItem("sessionReconnect");}}> Submit </button>
-        <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={this.props.router.goBack}> Cancel </button>
+        <button className = "massive fluid ui red button" style = {{margin:"10px 0px"}} onClick={()=>{this.props.router.goBack();}}> Cancel </button>
       </div>
     </div>
   </div>);

@@ -17,13 +17,13 @@ var router = {
   history:[],
   path:"/",
   goto:function(newPage) {
-    
+
     this.history.push(this.path);
     this.path = newPage;
     this.origin.forceUpdate();
   },
   goBack:function(){
-    
+    debugger;
     if(this.history.length >0){
       this.path = this.history[this.history.length - 1];
       this.history.pop();
