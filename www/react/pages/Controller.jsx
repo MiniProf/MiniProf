@@ -9,11 +9,7 @@ var IndexPage = React.createClass({
     };
   },
   reviewTest:function(letter){
-
-    request.get('http://wilsonator.co.uk/PollResponse.php?VOTE='+ letter).end((err,res)=>{
-
       this.props.router.goto("/review");
-    });
   },
   sendPoll:function(letter){
 
