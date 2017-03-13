@@ -10,9 +10,19 @@ import mat from 'material-ui/Avatar';
 
 var Screen = React.createClass({
   getInitialState:function(){
+    if(window.localStorage.getItem("sessionReconnect") != null){
+    return{SessionCode:window.localStorage.getItem("sessionReconnect")};
+    }
+  else {
     return{SessionCode:null};
+  }},
+  componentDidMount:function(){
+    if(window.localStorage.getItem("sessionReconnect") != null){
+      router.goto("/controller");
+    }
   },
   sessionGrab:function(SessionCode){
+    window.localStorage.setItem("sessionReconnect",SessionCode);
     this.setState({SessionCode:SessionCode});
   },
   render:function(){

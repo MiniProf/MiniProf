@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.github.miniprof.student"
+        },
+        "com.cordova.plugins.cookiemaster": {
+            "PACKAGE_NAME": "com.github.miniprof.student"
         }
     },
     "dependent_plugins": {}

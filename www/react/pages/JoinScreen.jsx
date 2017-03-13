@@ -11,14 +11,14 @@ var IndexPage = React.createClass({
   },
   sendResponse:function(letter){
     var SessionCode = this.state.text;
-    this.props.grab(SessionCode);
     request.post(serverName +'Sessions/joinSession/')
     .set('content-type', 'application/x-www-form-urlencoded')
     .send({SESSIONID:SessionCode})
     .end((err,res)=>{
 
       if(!err && !res.body.error){
-        this.props.router.goto("/controller");
+      this.props.grab(SessionCode);
+      this.props.router.goto("/controller");
       }
       else{
         this.setState({text:""});
@@ -39,17 +39,17 @@ var IndexPage = React.createClass({
   },
   render:function(){
     return(<div id="IndexPage" className="page">
-    <div  className = "fluid ui icon input focus"  style = {{width: "100%"}}>
-      <input type="text" name="name" value={this.state.text} onChange={this.onChange} onKeyPress={this.autosubmit} placeholder = "Session Code..."/>
-      <i className="sign in icon"></i>
-    </div>
-    <div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <button type="submit" className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse(this.state.text)}}> Join Session </button>
-    </div>
-</div>);
-}
+      <div  className = "fluid ui icon input focus"  style = {{width: "100%"}}>
+        <input type="text" name="name" value={this.state.text} onChange={this.onChange} onKeyPress={this.autosubmit} placeholder = "Session Code..."/>
+        <i className="sign in icon"></i>
+      </div>
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <button type="submit" className = "massive fluid ui green button" style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse(this.state.text)}}> Join Session </button>
+      </div>
+    </div>);
+  }
 });
 module.exports = IndexPage;
