@@ -18,10 +18,9 @@ var IndexPage = React.createClass({
   sendPoll:function(letter){
 
     //needs POLLID
-    request.post(serverName + 'Poll/?ID=3&VOTE='+ letter)
+    request.post(serverName + 'Poll/?SESSIONID='+this.props.sessionCode+'&VOTE='+ letter)
     .set({'content-type':"application/x-www-form-urlencoded"})
     .end((err,res)=>{
-
       if(!err && !res.body.error)
         this.setState({void:true},this.showSidebar);
     });
