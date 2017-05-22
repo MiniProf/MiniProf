@@ -1,6 +1,7 @@
 var React  = require('react');
 var TopBar = require('../components/TopBar');
 var request = require('superagent');
+var io = require('socket.io-client')
 var IndexPage = React.createClass({
   getInitialState:()=>{
     return {
@@ -19,6 +20,28 @@ var IndexPage = React.createClass({
     .end((err,res)=>{
       if(!err && !res.body.error)
         this.setState({void:true},this.showSidebar);
+    });
+  },
+  componentWillMount:function(){
+    var socket = io("http://sccug-mini-prof.lancs.ac.uk:8000")
+    socket.on('connect', (client) => {
+      console.log(this.props.sessionCode);
+        socket.emit("init", {tableName:"MP_Sessions",value:this.props.sessionCode});
+        socket.on("message", (row) => {
+          debugger;
+            this.reviewTest("Submit Review");
+        });
+    });
+    var socket2 = io("http://sccug-mini-prof.lancs.ac.uk:8000")
+    socket2.on('connect', (client) => {
+        socket2.emit("init", {tableName:"MP_Questions",value:this.props.sessionCode});
+        socket2.on("message", (row) => {
+          debugger;
+          console.log(row);
+          if( row.Acount == 0 && row.Bcount == 0 && row.Ccount == 0 && row.Dcount == 0 ){
+            this.showSidebar();
+          }
+        });
     });
   },
   sendResponse:function(letter){
@@ -48,7 +71,6 @@ var IndexPage = React.createClass({
       <button className={'massive fluid ui yellow button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
       <button className = {'massive fluid ui blue button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
       <button className = {'massive fluid ui red button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
-      <button className = {'massive fluid ui green button ' + classDis } disabled={(this.state.disabled)?true:false}  style = {{margin:"10px 0px"}} onClick={()=>{this.reviewTest("Submit Review")}}> Review Test </button>
     </div>
 
     <div className="ui thin bottom sidebar vertical menu">
@@ -67,9 +89,6 @@ var IndexPage = React.createClass({
       <a className="item" onClick={this.showSidebar} style = {{textAlign:"center", background:"rgba(0,0,0,0)", fontWeight:"bold", fontSize:"16", margin:"3px 3px"}}>
         GO BACK
       </a>
-    </div>
-    <div className="center pusher" onClick={this.showSidebar}>
-      <button className = "fluid ui green button" style = {{margin:"40px 0px"}}> ANSWER QUIZ </button>
     </div>
 </div>);
 }

@@ -9,7 +9,7 @@ var IndexPage = React.createClass({
     };
   },
   sendResponse:function(letter){
-    request.post('http://wilsonator.co.uk/MiniProf/Review/')
+    request.post(serverName +'Review/')
     .set('content-type', 'application/x-www-form-urlencoded')
     .send({SESSIONID:this.props.sessionCode,REVIEW:this.state.text})
     .end((err,res)=>{
