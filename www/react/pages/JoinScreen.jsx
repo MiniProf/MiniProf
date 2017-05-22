@@ -7,7 +7,7 @@ var IndexPage = React.createClass({
     window.onpopstate = function (event) {
       //history.go(1);
     };
-    return {void:false};
+    return {void:false,text:""};
   },
   sendResponse:function(letter){
     var SessionCode = this.state.text;
@@ -27,7 +27,8 @@ var IndexPage = React.createClass({
     });
   },
   onChange:function(e){
-    this.setState({text:e.target.value});
+    if(this.state.text.length < 6 || e.target.value.length < this.state.text.length)
+      this.setState({text:e.target.value.toUpperCase()});
   },
   autosubmit:function(e){
     if(e.which === 13){
@@ -40,7 +41,7 @@ var IndexPage = React.createClass({
   render:function(){
     return(<div id="IndexPage" className="page">
       <div className = "fluid ui icon input focus"  style = {{width: "100%"}}>
-        <input type="text" name="name" value={this.state.text} onChange={this.onChange} onKeyPress={this.autosubmit} placeholder = "Session Code..."/>
+        <input type="text" name="name" value={this.state.text} onChange={this.onChange} maxlength="6"  onKeyPress={this.autosubmit} placeholder = "Session Code..."/>
         <i className="sign in icon"></i>
       </div>
       <div>

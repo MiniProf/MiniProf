@@ -69,7 +69,7 @@ var IndexPage = React.createClass({
     return(<div id="IndexPage" className="page">
     <div id="mainBtns">
       <button className={'massive fluid ui yellow button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Fast")}}> TOO FAST </button>
-      <button className = {'massive fluid ui blue button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> I DON'T UNDERSTAND? </button>
+      <button className = {'massive fluid ui blue button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("NH")}}> DON'T UNDERSTAND </button>
       <button className = {'massive fluid ui red button ' + classDis } disabled={(this.state.disabled)?true:false} style = {{margin:"10px 0px"}} onClick={()=>{this.sendResponse("Slow")}}> TOO SLOW </button>
     </div>
 
